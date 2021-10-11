@@ -25,7 +25,10 @@ const removeAll=()=>{
 }
 const editVal=(id)=>{
 const data=window.prompt("Edit Value");
+if(data!=="")
 items[id] = data;
+else
+window.alert("Please enter a value");
 if(change!==0)
     setChange(0);
     else
