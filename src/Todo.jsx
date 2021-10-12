@@ -4,7 +4,6 @@ import web from './img.png';
 const Todo=()=>{
     const [inputData,setInputData]=useState("");
     const [items,setItems]=useState([]);
-    const [change,setChange]=useState(0);
 const addItem=()=>{
     if(!inputData)
     {
@@ -25,36 +24,40 @@ const removeAll=()=>{
 }
 const editVal=(id)=>{
 const data=window.prompt("Edit Value");
+let newArray=items.slice();
 if(data!=="")
-items[id] = data;
+{
+    newArray[id] = data;
+    setItems(newArray);
+}
 else
 window.alert("Please enter a value");
-if(change!==0)
-    setChange(0);
-    else
-    setChange(change+1);
 }
 const sortUp=(id)=>{
+    let newArray=items.slice();
     if(id===0)
     alert("chill");
     else
     {
-       let temp=items[id];
-       items[id]=items[id-1];
-       items[id-1]=temp;
+       let temp= newArray[id];
+        newArray[id]= newArray[id-1];
+        newArray[id-1]=temp;
+        setItems(()=>newArray);
     }
-    setChange(change+1);
+    // setChange(change+1);
 }
 const sortDown=(id)=>{
+    let newArray=items.slice();
     if(id===items.length-1)
     alert("chill");
     else
     {
-       let temp=items[id];
-       items[id]=items[id+1];
-       items[id+1]=temp;
+       let temp=newArray[id];
+       newArray[id]=newArray[id+1];
+       newArray[id+1]=temp;
+       setItems(()=>newArray);
     }
-    setChange(change+1);
+    // setChange(change+1);
 }
   return (
   <>
